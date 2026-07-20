@@ -17,7 +17,7 @@ senescence) aggregated over many Boolean initial conditions.
 1. [Prerequisites](#prerequisites)
 2. [Environment Setup](#environment-setup)
 3. [Quick Start](#quick-start)
-4. [Running on the Bridges-2 Cluster (Slurm)](#running-on-the-bridges-2-cluster-slurm)
+4. [Running on an HPC Cluster (Slurm)](#running-on-an-hpc-cluster-slurm)
 5. [Command-Line Options](#command-line-options)
 6. [How the Simulation Works](#how-the-simulation-works)
 7. [Input Files](#input-files)
@@ -50,7 +50,8 @@ The main script invokes `CopasiSE` by bare name, so **that directory must be on 
 
 ## Environment Setup
 
-On **Bridges-2**, create the virtual environment once:
+On the **HPC cluster**, create the virtual environment once (module names may differ
+by site — adjust to whatever provides Python 2.7):
 
 ```bash
 module load python/2.7.18
@@ -103,7 +104,8 @@ cores those run concurrently.
 ## Running on an HPC Cluster (Slurm) - Need to adapt for use.
 
 The provided `Job_Submit_Slurm.sh` bundles everything (module load, venv activation,
-`PATH` export, and the run) for the RM-shared partition:
+`PATH` export, and the run). Edit the `#SBATCH` directives (partition/queue, account,
+cores, wall time) and the `module load` line to match your cluster before submitting:
 
 ```bash
 sbatch Job_Submit_Slurm.sh
@@ -254,7 +256,7 @@ The `collected_csvs/` directory holds spreadsheets of previously collected sweep
 | `ErbB_Ras-MAPK_PI3K-AKT.cps` | MAPK/PI3K COPASI model. |
 | `AR_Base_Interfaces.cps` | AR COPASI model. |
 | `Copasi_Executables/` | Bundled `CopasiSE` engines. |
-| `Job_Submit_Slurm.sh` | Slurm submission script (Bridges-2). |
+| `Job_Submit_Slurm.sh` | Slurm submission script (adapt `#SBATCH` directives to your cluster). |
 | `Job_Submit.sh` | Legacy PBS submission script. |
 | `requirements.txt` | Python 2 dependencies. |
 | `venv_pca/` | Python 2.7 virtual environment. |
