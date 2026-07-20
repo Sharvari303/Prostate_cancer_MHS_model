@@ -101,9 +101,9 @@ cores those run concurrently.
 
 ---
 
-## Running on an HPC Cluster (Slurm) - Need to adapt for use.
+## Running on an HPC Cluster (Slurm) 
 
-The provided `Job_Submit_Slurm.sh` bundles everything (module load, venv activation,
+Need to adapt for use. The provided `Job_Submit_Slurm.sh` bundles everything (module load, venv activation,
 `PATH` export, and the run). Edit the `#SBATCH` directives (partition/queue, account,
 cores, wall time) and the `module load` line to match your cluster before submitting:
 
